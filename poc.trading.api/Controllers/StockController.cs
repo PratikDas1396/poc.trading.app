@@ -20,15 +20,13 @@ namespace poc.trading.api.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        [Route("/GetAll")]
+        [HttpGet("GetAll")]
         public async Task<List<Stocks>> Get()
         {
             return await _service.GetAllStocks();
         }
 
-        [HttpPost]
-        [Route("/update")]
+        [HttpPost("update")]
         public async Task<bool> update(UpdateStockRequest request)
         {
             return await _service.Update(request);
