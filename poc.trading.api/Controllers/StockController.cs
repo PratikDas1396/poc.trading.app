@@ -20,10 +20,6 @@ namespace poc.trading.api.Controllers
             _logger = logger;
         }
 
-
-
-
-
         [HttpGet]
         [Route("/GetAll")]
         public async Task<List<Stocks>> Get()

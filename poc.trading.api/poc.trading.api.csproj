@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\poc.trading.db\poc.trading.db.csproj" />
     <ProjectReference Include="..\poc.trading.sdk\poc.trading.sdk.csproj" />
+    <ProjectReference Include="..\poc.trading.signalr\poc.trading.signalr.csproj" />
   </ItemGroup>
 
 </Project>

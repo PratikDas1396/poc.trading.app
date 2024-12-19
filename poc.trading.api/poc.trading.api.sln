@@ -5,9 +5,11 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "poc.trading.api", "poc.trading.api.csproj", "{5F5C6A36-6EB9-4982-91C5-ADEDC1768527}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "poc.trading.sdk", "..\poc.trading.sdk\poc.trading.sdk.csproj", "{FC7C662A-3871-44A7-AA60-77D61D1EA01A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "poc.trading.sdk", "..\poc.trading.sdk\poc.trading.sdk.csproj", "{FC7C662A-3871-44A7-AA60-77D61D1EA01A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "poc.trading.db", "..\poc.trading.db\poc.trading.db.csproj", "{185C15B4-8A90-4397-9B7F-9E8FD79CD684}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "poc.trading.db", "..\poc.trading.db\poc.trading.db.csproj", "{185C15B4-8A90-4397-9B7F-9E8FD79CD684}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "poc.trading.signalr", "..\poc.trading.signalr\poc.trading.signalr.csproj", "{B63F434E-95CF-4C7A-AD46-E13C0444CE2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{185C15B4-8A90-4397-9B7F-9E8FD79CD684}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{185C15B4-8A90-4397-9B7F-9E8FD79CD684}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{185C15B4-8A90-4397-9B7F-9E8FD79CD684}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B63F434E-95CF-4C7A-AD46-E13C0444CE2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B63F434E-95CF-4C7A-AD46-E13C0444CE2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B63F434E-95CF-4C7A-AD46-E13C0444CE2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B63F434E-95CF-4C7A-AD46-E13C0444CE2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
