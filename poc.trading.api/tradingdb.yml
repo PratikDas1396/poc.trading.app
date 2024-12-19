@@ -1,0 +1,12 @@
+﻿services:
+  tradingdb:
+    image: pratikdas1396/poc.trading.db:v2
+    container_name: tradingdb
+    environment:
+      MYSQL_ROOT_PASSWORD: pass@123
+      MYSQL_DATABASE: tradingdb
+      MYSQL_USER: user1
+      MYSQL_PASSWORD: pass@123
+    ports:
+      - "3307:3306"
+    restart: always
