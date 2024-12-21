@@ -3,8 +3,6 @@ using poc.trading.api.Entities;
 using poc.trading.api.Entities.Dto;
 using poc.trading.api.Services.Interfaces;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace poc.trading.api.Controllers
 {
     [Route("api/[controller]")]
@@ -12,9 +10,9 @@ namespace poc.trading.api.Controllers
     public class StockController : ControllerBase
     {
         private IStockService _service;
-        private readonly ILogger<IStockService> _logger;
+        private readonly ILogger<StockController> _logger;
 
-        public StockController(IStockService service, ILogger<IStockService> logger)
+        public StockController(IStockService service, ILogger<StockController> logger)
         {
             _service = service;
             _logger = logger;

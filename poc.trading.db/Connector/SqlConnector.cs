@@ -31,5 +31,13 @@ namespace poc.trading.db.Connector
             }
         }
 
+        public async Task<T> GetSingleData<T>(string query, object? param = null, CommandType commandType = CommandType.StoredProcedure)
+        {
+            using (var connection = new MySqlConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+                return await connection.QuerySingleAsync<T>(query, param, commandType: commandType);
+            }
+        }
     }
 }
