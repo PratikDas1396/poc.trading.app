@@ -5,6 +5,7 @@ using poc.trading.api.Services;
 using poc.trading.api.Services.Interfaces;
 using poc.trading.db.Middleware;
 using poc.trading.sdk.Authentication;
+using poc.trading.sdk.ExceptionHandler;
 using poc.trading.signalr;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -50,6 +51,7 @@ var app = builder.Build();
 //    app.UseSwaggerUI();
 //}
 
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 app.UseSwagger();
 app.UseSwaggerUI();
 
@@ -57,6 +59,7 @@ app.UseHsts();
 app.UseHttpsRedirection();
 app.UseRouting();
 app.UseCors("AllowAllOrigins");
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.UseSingalR();
