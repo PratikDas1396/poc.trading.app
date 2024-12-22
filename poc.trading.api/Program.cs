@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Options;
 using poc.trading.api.Repositpory;
 using poc.trading.api.Repositpory.Interface;
 using poc.trading.api.Services;
@@ -15,6 +16,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerAuthentication();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins", builder =>
+    {
+        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    });
+});
 
 builder.Services.AddJwtAuthentication(builder.Configuration);
 
@@ -48,6 +56,7 @@ app.UseSwaggerUI();
 app.UseHsts();
 app.UseHttpsRedirection();
 app.UseRouting();
+app.UseCors("AllowAllOrigins");
 app.UseAuthorization();
 app.MapControllers();
 app.UseSingalR();
