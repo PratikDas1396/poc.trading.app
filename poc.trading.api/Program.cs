@@ -1,9 +1,9 @@
-
 using poc.trading.api.Repositpory;
 using poc.trading.api.Repositpory.Interface;
 using poc.trading.api.Services;
 using poc.trading.api.Services.Interfaces;
 using poc.trading.db.Middleware;
+using poc.trading.sdk.Authentication;
 using poc.trading.signalr;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +13,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerAuthentication();
+
+
+builder.Services.AddJwtAuthentication(builder.Configuration);
 
 // Sql Connection
 var connectionString = builder.Configuration.GetConnectionString("MysqlConnection") ?? "";
@@ -24,9 +28,11 @@ builder.Services.AddScoped<IWatchlistService, WatchlistService>();
 builder.Services.AddScoped<IWatchlistRepository, WatchlistRepository>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.SetupSignalR();
-
+builder.Services.AddHealthChecks();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -36,10 +42,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseHsts();
 app.UseHttpsRedirection();
 app.UseRouting();
 app.UseAuthorization();
 app.MapControllers();
 app.UseSingalR();
-
+app.MapHealthChecks("/health");
 app.Run();

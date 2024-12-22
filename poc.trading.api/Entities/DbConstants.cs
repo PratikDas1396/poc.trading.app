@@ -11,7 +11,7 @@
         public const string CREATE_ORDER = "prc_createOrder";
         public const string GET_ORDER_DETAILS = "prc_GetOrderDetails";
         public const string GET_ORDER_BY_USER = "prc_GetUserOrderDetails";
-
-        //
+        public const string GET_USER_DETAILS = "prc_getUserDetails";
+        public const string GET_USER_DETAILS_BY_EMAIL = "prc_getUserDetailsByEmail";
     }
 }

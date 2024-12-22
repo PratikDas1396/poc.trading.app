@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using poc.trading.api.Entities.Dto;
 using poc.trading.api.Services.Interfaces;
 
@@ -6,7 +7,8 @@ namespace poc.trading.api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class WatchlistController : ControllerBase
+    [Authorize]
+    public class WatchlistController
     {
         private IWatchlistService _service;
         private readonly ILogger<WatchlistController> _logger;

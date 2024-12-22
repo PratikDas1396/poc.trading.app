@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using poc.trading.api.Entities;
 using poc.trading.api.Entities.Dto;
 using poc.trading.api.Services.Interfaces;
@@ -7,7 +8,8 @@ namespace poc.trading.api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StockController : ControllerBase
+    [Authorize]
+    public class StockController : Controller
     {
         private IStockService _service;
         private readonly ILogger<StockController> _logger;
