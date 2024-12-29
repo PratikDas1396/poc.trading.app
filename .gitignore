@@ -29,6 +29,7 @@ nupkg/
 
 # Build results
 [Dd]ebug/
+[Pp]blish/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
