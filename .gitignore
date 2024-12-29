@@ -29,7 +29,7 @@ nupkg/
 
 # Build results
 [Dd]ebug/
-[Pp]blish/
+[Pp]ublish/
 [Dd]ebugPublic/
 [Rr]elease/
 [Rr]eleases/
@@ -46,12 +46,16 @@ msbuild.log
 msbuild.err
 msbuild.wrn
 
-
+/poc.trading.api/publish
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
 
 /poc.trading.frontend/node_modules
+/poc.trading.frontend/build
+/.pnp
+.pnp.js
+
 /.pnp
 .pnp.js
 
