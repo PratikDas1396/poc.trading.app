@@ -1,38 +1,47 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router";
+import Header from "./components/Header";
+import { StockContextProvider } from "./context/stockContext";
 import "./index.css";
-import App from "./App";
-import { BrowserRouter, Routes, Route } from "react-router";
-import { HashRouter } from "react-router-dom";
+import Login from "./pages/Login/Login";
 import StockList from "./pages/StockList/StockList";
 import WatchList from "./pages/WatchList/WatchList";
-import Login from "./pages/Login/Login";
-import { StockContext, StockContextProvider } from "./context/stockContext";
+// import { socketConnection } from "./signalR";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <HashRouter>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route
-          path="/stockList"
-          element={
-            <StockContextProvider>
-              <StockList />
-            </StockContextProvider>
-          }
-        />
-        <Route
-          path="/watchList"
-          element={
-            <StockContextProvider>
-              <WatchList />
-            </StockContextProvider>
-          }
-        />
-        <Route path="/" element={<App />} />
-      </Routes>
-    </HashRouter>
+    <BrowserRouter>
+      <StockContextProvider>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<HomePage />}>
+            <Route index element={<StockList />} />
+            <Route path="/watch-list" element={<WatchList />} />
+            <Route path="*" element={<StockList />} />
+          </Route>
+        </Routes>
+      </StockContextProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
+
+function HomePage() {
+  // useEffect(() => {
+  //   socketConnection.on("send", (data) => {
+  //     console.log(data);
+  //   });
+
+  //   socketConnection
+  //     .start()
+  //     .then(() => socketConnection.invoke("send", "Hello"));
+  // }, []);
+
+  return (
+    <>
+      <Header />
+      <Outlet />
+    </>
+  );
+}

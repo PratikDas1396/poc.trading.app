@@ -3,6 +3,7 @@
   "name": "poc-trading-app",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://149.102.133.42/trading-app",
   "dependencies": {
     "@microsoft/signalr": "^8.0.7",
     "axios": "^1.7.9",

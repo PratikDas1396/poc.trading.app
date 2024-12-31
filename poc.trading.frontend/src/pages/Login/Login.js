@@ -1,26 +1,21 @@
-import { useState } from "react";
-import Button from "../../components/Button";
-import { postApi } from "../../utils/Api";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "../../components/Button";
+import { StockContext } from "../../context/stockContext";
+import useApiHandle from "../../hooks/useApiHandler";
+import API from "../../utils/ApiAxios";
 
 export default function Login() {
-  const navigate = useNavigate();
+  const { setLoginInfo } = useContext(StockContext);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [, fetchData] = useApiHandle();
 
   const handleLogin = async () => {
-    const res = await postApi({
-      url: "api/User/login",
-      payload: {
-        userName,
-        password,
-      },
-    });
-    console.log({ res });
-    if (res.token) {
-      localStorage.setItem("token", res.token);
-      navigate("/stockList");
-    }
+    fetchData(
+      () => API.post("api/User/login", { userName, password }),
+      (data) => setLoginInfo(data, { userName })
+    );
   };
 
   return (

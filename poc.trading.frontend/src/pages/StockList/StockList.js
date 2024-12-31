@@ -1,42 +1,70 @@
-import StockItem from "../../components/SockItem";
-import { StockContext } from "../../context/stockContext";
 import { useContext, useEffect } from "react";
-import axios from "axios";
-import { AddToWatchListIcon } from "../../components/Icons";
-import { authGetApi, authPostApi } from "../../utils/Api";
+import { LinkButton } from "../../components/Button";
+import Table from "../../components/Table";
+import { StockContext } from "../../context/stockContext";
+import API from "../../utils/ApiAxios";
+import useApiHandle from "../../hooks/useApiHandler";
 
 export default function StockList() {
-  const stockContext = useContext(StockContext);
+  const { stockList, setStockList, loginDetails } = useContext(StockContext);
+  const [, fetchData] = useApiHandle();
 
   useEffect(() => {
-    (async () => {
-      const res = await authGetApi({ url: `/api/stock/GetAll` });
-      console.log({ res });
-      stockContext.setStockList(res);
-    })();
+    fetchData(() => API.get(`/api/stock/GetAll`), setStockList);
   }, []);
 
-  const handleAddToWatchList = async () => {
-    const res = await authPostApi({
-      url: `/api/Watchlist/add`,
-      payload: {
-        userId: "2290ca93-5e08-4263-a8f3-30032c41bc8a",
-        stockId: "171d9ec5-0ba5-4eb0-abbc-4ddaa0402cdb",
-      },
-    });
-    console.log({ res });
+  const handleAddToWatchList = ({ id }) => {
+    fetchData(
+      () =>
+        API.post(`/api/Watchlist/add`, {
+          userId: loginDetails.id,
+          stockId: id,
+        }),
+      null,
+      { successMsg: "Stock successfully added to watch list" }
+    );
   };
+
+  const columnDefs = [
+    {
+      title: "Stock name",
+      field: "name",
+    },
+    {
+      title: "Price",
+      field: "price",
+      cellRenderer: (item) => <label>{`Rs ${item.price}`}</label>,
+      align: "right",
+      width: "5",
+    },
+    {
+      title: "Total quantity",
+      field: "totalQuantity",
+      align: "right",
+    },
+    {
+      title: "Available quantity",
+      field: "availableQuantity",
+      align: "right",
+    },
+    {
+      title: "",
+      field: "id",
+      cellRenderer: (item) => (
+        <div className="w-full flex justify-center">
+          <LinkButton
+            name="Add"
+            onClick={() => handleAddToWatchList(item)}
+            className="cursor-pointer font-medium text-indigo-500 hover:text-green-500"
+          />
+        </div>
+      ),
+    },
+  ];
 
   return (
     <div className="w-[40%] m-auto">
-      <StockItem
-        action={
-          <AddToWatchListIcon
-            onClick={handleAddToWatchList}
-            className="cursor-pointer stroke-2 stroke-indigo-500 hover:stroke-green-500"
-          />
-        }
-      />
+      <Table columnDefs={columnDefs} data={stockList} />
     </div>
   );
 }
