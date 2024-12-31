@@ -21,12 +21,12 @@ namespace poc.trading.api.Repositpory
 
         public async Task<bool> Delete(string userId, string stockId)
         {
-            return await _connector.Execute(DbConstants.DELETE_WATCHLIST, new { userId, stockId }) > 0;
+            return await _connector.Execute(DbConstants.DELETE_WATCHLIST, new { p_userId = userId, p_stockId  = stockId }) > 0;
         }
 
         public async Task<List<Stocks>> Get(string userId)
         {
-            return (await _connector.GetData<Stocks>(DbConstants.GET_WATCHLIST, new { userId })).ToList();
+            return (await _connector.GetData<Stocks>(DbConstants.GET_WATCHLIST, new { p_userId = userId })).ToList();
         }
     }
 }
