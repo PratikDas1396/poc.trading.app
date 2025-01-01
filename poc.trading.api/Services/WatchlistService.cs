@@ -15,6 +15,10 @@ namespace poc.trading.api.Services
 
         public async Task<bool> Add(string userId, string stockId)
         {
+            var stocks = await this.Get(userId);
+
+            if (stocks.Any(a => a.Id == stockId)) return true;
+
             return await _watchlistRepository.Add(userId, stockId);
         }
 
