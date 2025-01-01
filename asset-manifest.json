@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/poc.trading.app/static/css/main.f00b8287.css",
-    "main.js": "/poc.trading.app/static/js/main.c1426424.js",
+    "main.js": "/poc.trading.app/static/js/main.94b4fbf8.js",
     "index.html": "/poc.trading.app/index.html",
     "main.f00b8287.css.map": "/poc.trading.app/static/css/main.f00b8287.css.map",
-    "main.c1426424.js.map": "/poc.trading.app/static/js/main.c1426424.js.map"
+    "main.94b4fbf8.js.map": "/poc.trading.app/static/js/main.94b4fbf8.js.map"
   },
   "entrypoints": [
     "static/css/main.f00b8287.css",
-    "static/js/main.c1426424.js"
+    "static/js/main.94b4fbf8.js"
   ]
 }
