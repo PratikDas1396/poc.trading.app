@@ -2,7 +2,7 @@
 {
     public class CreateOrderRequest
     {
-        public string Id { get; set; }
+        public string? Id { get; set; }
         public string StockId { get; set; }
         public string UserId { get; set; }
         public long Quantity { get; set; }

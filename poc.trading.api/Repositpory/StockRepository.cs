@@ -24,6 +24,11 @@ namespace poc.trading.api.Repositpory
             return (await _connector.GetSingleData<Stocks>(DbConstants.GET_STOCKS, new { stockId = Id }));
         }
 
+        public async Task<bool> UpdateAvailableQuantity(UpdateAvailableQuantityRequest request)
+        {
+            return await _connector.Execute(DbConstants.UPDATE_AVAILABLE_STOCK_QUANTITY, request) > 0;
+        }
+
         public async Task<bool> UpdateStock(UpdateStockRequest request)
         {
             return await _connector.Execute(DbConstants.UPDATE_STOCK, request) > 0;

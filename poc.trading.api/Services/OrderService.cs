@@ -35,11 +35,15 @@ namespace poc.trading.api.Services
 
             if (response)
             {
-                //await _stockRepository.UpdateStock(new Entities.UpdateStockRequest() {  })
+                await _stockRepository.UpdateAvailableQuantity(
+                    new Entities.UpdateAvailableQuantityRequest()
+                    {
+                        StockId = request.StockId,
+                        UpdatedQuantity = (stock.AvailableQuantity - request.Quantity)
+                    });
             }
 
             return response;
-
         }
 
         public async Task<OrderDetails> GetDetails(string orderId)

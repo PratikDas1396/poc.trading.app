@@ -1,6 +1,4 @@
-﻿using Mysqlx.Crud;
-using Org.BouncyCastle.Asn1.Ocsp;
-using poc.trading.api.Entities;
+﻿using poc.trading.api.Entities;
 using poc.trading.api.Entities.Dto;
 using poc.trading.api.Repositpory.Interface;
 using poc.trading.db.Connector;

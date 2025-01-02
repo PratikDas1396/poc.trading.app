@@ -4,6 +4,7 @@
     {
         public const string GET_ALL_STOCKS = "prc_getAllStocks";
         public const string GET_STOCKS = "prc_getStocks";
+        public const string UPDATE_AVAILABLE_STOCK_QUANTITY = "prc_updateStockQuantity";
         public const string UPDATE_STOCK = "prc_updateStock";
         public const string ADD_WATCHLIST = "prc_addWatchlist"; 
         public const string GET_WATCHLIST = "prc_getWatchlist";
