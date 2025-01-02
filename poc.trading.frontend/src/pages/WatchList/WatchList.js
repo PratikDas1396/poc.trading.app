@@ -17,7 +17,6 @@ export default function WatchList() {
   const [, fetchData] = useApiHandle();
 
   useEffect(() => {
-    console.log("loginDetails", loginDetails);
     if (loginDetails) fetchData(getWatchList, setWatchList);
   }, [loginDetails]);
 

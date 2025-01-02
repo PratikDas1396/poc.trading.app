@@ -46,7 +46,7 @@ export const StockContextProvider = (props) => {
   const getWatchList = async () => {
     return await API.get(`/api/Watchlist/${loginDetails.id}`);
   };
-  console.log({ loginDetails });
+
   return (
     <StockContext.Provider
       value={{

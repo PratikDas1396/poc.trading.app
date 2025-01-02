@@ -1,1 +1,1 @@
-export const API_URI = "https://149.102.133.42/trading-app";
+export const API_URI = "https://sr.avyanz.in/trading-app";

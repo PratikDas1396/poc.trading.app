@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState } from "react";
+import { useContext, useMemo, useState, useEffect } from "react";
 import { Button } from "../../components/Button";
 import { StockContext } from "../../context/stockContext";
 import useApiHandle from "../../hooks/useApiHandler";
@@ -9,7 +9,11 @@ export default function Order() {
   const { selectedStock, loginDetails, getWatchList, setSelectedStock } =
     useContext(StockContext);
 
-  const [quantity, setQuantity] = useState(selectedStock?.availableQuantity);
+  const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    if (selectedStock?.id) setQuantity(1);
+  }, [selectedStock?.id]);
 
   const quantityIsGraterThanTotal = useMemo(
     () => quantity > selectedStock?.totalQuantity,

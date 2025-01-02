@@ -17,7 +17,6 @@ export default function useApiHandle() {
       setData?.(res.data);
       setLocalData(res.data);
       setLoading(false);
-      console.log({ successMsg });
       if (successMsg) {
         setAlert({
           status: StatusConstant.success,
