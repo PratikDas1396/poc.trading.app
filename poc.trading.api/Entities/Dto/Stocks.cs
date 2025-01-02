@@ -7,5 +7,6 @@
         public decimal Price { get; set; }
         public long AvailableQuantity { get; set; }
         public long TotalQuantity { get; set; }
+        public bool IsAddedToWatchlist { get; set; } = false;
     }
 }

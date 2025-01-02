@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using poc.trading.sdk.Authentication.Entity;
 using System.Text;
 
 namespace poc.trading.sdk.Authentication
@@ -11,6 +13,8 @@ namespace poc.trading.sdk.Authentication
         public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped(typeof(TokenService));
+            services.AddScoped<UserContext>();
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -32,5 +36,15 @@ namespace poc.trading.sdk.Authentication
 
             return services;
         }
+
+        public static IApplicationBuilder UseJwtAuthentication(this WebApplication app)
+        {
+            app.UseAuthentication();
+            app.UseMiddleware<TokenClaimsMiddleware>();
+            app.UseAuthorization();
+
+            return app;
+        }
+
     }
 }

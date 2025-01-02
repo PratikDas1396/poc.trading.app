@@ -14,9 +14,9 @@ namespace poc.trading.api.Repositpory
             _connector = connector;
         }
 
-        public async Task<List<Stocks>> GetAllStocks()
+        public async Task<List<Stocks>> GetAllStocks(string userId)
         {
-            return (await _connector.GetData<Stocks>(DbConstants.GET_ALL_STOCKS)).ToList();
+            return (await _connector.GetData<Stocks>(DbConstants.GET_ALL_STOCKS, new { p_userId = userId })).ToList();
         }
 
         public async Task<Stocks> GetStock(string Id)

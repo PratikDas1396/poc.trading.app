@@ -5,7 +5,7 @@ namespace poc.trading.api.Repositpory.Interface
 {
     public interface IStockRepository
     {
-        public Task<List<Stocks>> GetAllStocks();
+        public Task<List<Stocks>> GetAllStocks(string userId);
         public Task<bool> UpdateStock(UpdateStockRequest request);
         Task<Stocks> GetStock(string Id);
     }
